@@ -2,20 +2,17 @@ import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
 const gallery = document.querySelector(".gallery");
+
 // evt delegation
 gallery.addEventListener("click", selectImg);
 function selectImg(e) {
   e.preventDefault();
-  //   if (e.target.nodeName !== "A") {
-  //     return;
-  //   }
+  if (e.target.nodeName !== "IMG") {
+    return;
+  }
   const selectedImg = e.target.dataset.source;
-  const output = e.target;
-  output.src = selectedImg;
-  const instance = basicLightbox.create(output);
-
-  //   output.src = selectedImg;
-  //   const instance = basicLightbox.create(output);
+  e.target.src = selectedImg;
+  const instance = basicLightbox.create(`<img src=${selectedImg}>`);
   instance.show();
 }
 
