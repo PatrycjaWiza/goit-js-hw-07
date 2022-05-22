@@ -10,10 +10,20 @@ function selectImg(e) {
   if (e.target.nodeName !== "IMG") {
     return;
   }
+
   const selectedImg = e.target.dataset.source;
   e.target.src = selectedImg;
   const instance = basicLightbox.create(`<img src=${selectedImg}>`);
-  instance.show();
+  instance.show(() => console.log("lightbox show"));
+
+  // *extra: esc press - escapes the gallery
+
+  gallery.addEventListener("keydown", escLightbox);
+  function escLightbox(e) {
+    if (e.key === "Escape") {
+      instance.close();
+    }
+  }
 }
 
 // rendering gallery
