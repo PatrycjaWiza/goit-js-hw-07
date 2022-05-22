@@ -18,7 +18,7 @@ function selectImg(e) {
 
   // *extra: esc press - escapes the gallery
 
-  gallery.addEventListener("keydown", escLightbox);
+  this.addEventListener("keydown", escLightbox);
   function escLightbox(e) {
     if (e.key === "Escape") {
       instance.close();
